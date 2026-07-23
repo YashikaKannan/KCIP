@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "52757000000023026",
+      "name": "KCIP",
+      "domain": {
+        "id": "50044264993",
+        "name": "kcip-60077221907.development"
+      },
+      "timezone": "Asia/Kolkata",
+      "env": [
+        {
+          "idx": 1,
+          "id": "60077221907",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}
