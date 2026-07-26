@@ -2,8 +2,8 @@
  * @file CatalystChargesheetRepository.js
  * @description Catalyst Chargesheet Data Store Repository
  * @author KCIP Engineering Team - Phase 5 Catalyst Integration
- * @version 1.0.0
- * @lastUpdated 2026-07-25
+ * @version 2.0.0
+ * @lastUpdated 2026-07-26
  */
 
 import { CatalystDataStoreRepository } from './CatalystDataStoreRepository.js';
@@ -13,13 +13,19 @@ export class CatalystChargesheetRepository extends CatalystDataStoreRepository {
     super('Chargesheets', catalystApp);
   }
 
+  /**
+   * @param {string} firNumber
+   * @returns {Promise<object[]>}
+   */
   async findByFirNumber(firNumber) {
-    const all = await this.findAll();
-    return all.find(r => r.FIRNumber === firNumber) || null;
+    return this.findByField('FIRNumber', firNumber);
   }
 
-  async findByDistrict(district) {
-    const all = await this.findAll();
-    return all.filter(r => r.District === district);
+  /**
+   * @param {string} csNumber
+   * @returns {Promise<object|null>}
+   */
+  async findByChargesheetNumber(csNumber) {
+    return this.findOne({ ChargesheetNumber: csNumber });
   }
 }

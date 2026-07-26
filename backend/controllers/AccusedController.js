@@ -19,10 +19,22 @@ export class AccusedController extends BaseController {
       if (!this.service) {
         return ResponseUtil.error('Service instance not attached to controller.', 'SERVICE_MISSING', 500);
       }
+      if (payload?.action === 'listByFIR') {
+        const data = await this.service.getAccusedByFIR(payload.firNumber);
+        return ResponseUtil.success(data);
+      }
+      if (payload?.action === 'highRisk') {
+        const data = await this.service.getHighRiskSuspects(payload.district);
+        return ResponseUtil.success(data);
+      }
+      if (payload?.action === 'repeatOffenders') {
+        const data = await this.service.getRepeatOffenders();
+        return ResponseUtil.success(data);
+      }
       const data = await this.service.addAccused(payload);
-      return ResponseUtil.success(data);
+      return ResponseUtil.success(data, 'Accused added successfully', 201);
     } catch (error) {
-      return ResponseUtil.error(error.message, 'EXECUTION_FAILED', 400);
+      return ResponseUtil.error(error.message, 'EXECUTION_FAILED', error.statusCode || 400);
     }
   }
 }

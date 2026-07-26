@@ -1,18 +1,72 @@
 /**
  * @file ArrestRepository.js
- * @description Arrest Record Data Access Repository Contract
+ * @description Arrest Record Data Access Repository — Catalyst Data Store implementation
  * @author KCIP Backend Engineering Team
- * @version 1.0.0
- * @lastUpdated 2026-07-25
+ * @version 2.0.0
+ * @lastUpdated 2026-07-26
  */
 
 import { BaseRepository } from './BaseRepository.js';
+import { CatalystArrestRepository } from './catalyst/CatalystArrestRepository.js';
 
 export class ArrestRepository extends BaseRepository {
-  async findByAccusedId(accusedId) {
-    throw new Error('Method findByAccusedId(accusedId) not implemented. Will be implemented in Phase 5 Data Store integration.');
+  /**
+   * @param {object|null} catalystApp - Initialised Catalyst App from function context
+   */
+  constructor(catalystApp = null) {
+    super();
+    this.store = new CatalystArrestRepository(catalystApp);
   }
+
+  setCatalystApp(catalystApp) {
+    this.store.catalystApp = catalystApp;
+  }
+
+  async findById(id) {
+    return this.store.findById(id);
+  }
+
+  async findAll(options = {}) {
+    return this.store.findAll(options);
+  }
+
+  async create(data) {
+    return this.store.create(data);
+  }
+
+  async update(id, data) {
+    return this.store.update(id, data);
+  }
+
+  async delete(id) {
+    return this.store.delete(id);
+  }
+
+  async search(query) {
+    return this.store.search(query);
+  }
+
+  async bulkInsert(items) {
+    return this.store.bulkInsert(items);
+  }
+
+  async count(filter = {}) {
+    return this.store.count(filter);
+  }
+
+  async aggregate(pipeline) {
+    return this.store.aggregate(pipeline);
+  }
+
+  async findByAccusedId(accusedId) {
+    return this.store.findByAccusedId(accusedId);
+  }
+
   async findByFirNumber(firNumber) {
-    throw new Error('Method findByFirNumber(firNumber) not implemented. Will be implemented in Phase 5 Data Store integration.');
+    return this.store.findByFirNumber(firNumber);
+  }
+
+  async findByArrestId(arrestId) {
+    return this.store.findByArrestId(arrestId);
   }
 }

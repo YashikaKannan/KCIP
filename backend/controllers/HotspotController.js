@@ -19,10 +19,14 @@ export class HotspotController extends BaseController {
       if (!this.service) {
         return ResponseUtil.error('Service instance not attached to controller.', 'SERVICE_MISSING', 500);
       }
+      if (payload?.action === 'calculate') {
+        const data = await this.service.calculateAndStoreHotspots(payload?.district);
+        return ResponseUtil.success(data, 'Hotspots calculated');
+      }
       const data = await this.service.getHotspots(payload?.district, payload?.radiusKm);
       return ResponseUtil.success(data);
     } catch (error) {
-      return ResponseUtil.error(error.message, 'EXECUTION_FAILED', 400);
+      return ResponseUtil.error(error.message, 'EXECUTION_FAILED', error.statusCode || 400);
     }
   }
 }

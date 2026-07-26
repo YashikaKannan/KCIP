@@ -11,3 +11,6 @@ export * from './CatalystSignalsService.js';
 export * from './CatalystCircuitsService.js';
 export * from './CatalystNoSQLService.js';
 export * from './CatalystAuthService.js';
+export * from './CatalystStratusService.js';
+export * from './CatalystQuickMLService.js';
+export * from './CatalystCronService.js';

@@ -1,17 +1,17 @@
 /**
- * 
- * @param {import('./types/basicio').Context} context 
- * @param {import('./types/basicio').BasicIO} basicIO 
+ * @file index.js
+ * @description Catalyst Basic I/O — Authentication (login / logout / currentUser)
  */
-module.exports = (context, basicIO) => {
-	/* 
-        BASICIO FUNCTIONALITIES
-    */
-	basicIO.write('Hello from index.js'); //response stream (accepts only string, throws error if other than string)
-	basicIO.getArgument('argument1'); // returns QUERY_PARAM[argument1] || BODY_JSON[argument1] (takes argument from query and body, first preference to query)
-	/* 
-        CONTEXT FUNCTIONALITIES
-    */
-	console.log('successfully executed basicio functions');
-	context.close(); //end of application
-};
+const { createBasicIOHandler } = require('../shared/cjsBridge.cjs');
+
+module.exports = createBasicIOHandler(async ({ payload, app }) => {
+  const { composeBackend } = await import('../shared/compose.js');
+  const { controllers } = await composeBackend(app);
+  const action = String(payload.action || 'login').toLowerCase();
+
+  if (action === 'logout') return controllers.auth.logout(payload);
+  if (action === 'current' || action === 'me' || action === 'currentuser') {
+    return controllers.auth.currentUser(payload);
+  }
+  return controllers.auth.login(payload);
+}, { functionName: 'authentication' });

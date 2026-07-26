@@ -1,17 +1,14 @@
 /**
- * 
- * @param {import('./types/basicio').Context} context 
- * @param {import('./types/basicio').BasicIO} basicIO 
+ * Catalyst Basic I/O — arrest
  */
-module.exports = (context, basicIO) => {
-	/* 
-        BASICIO FUNCTIONALITIES
-    */
-	basicIO.write('Hello from index.js'); //response stream (accepts only string, throws error if other than string)
-	basicIO.getArgument('argument1'); // returns QUERY_PARAM[argument1] || BODY_JSON[argument1] (takes argument from query and body, first preference to query)
-	/* 
-        CONTEXT FUNCTIONALITIES
-    */
-	console.log('successfully executed basicio functions');
-	context.close(); //end of application
-};
+const { createBasicIOHandler } = require('../shared/cjsBridge.cjs');
+
+module.exports = createBasicIOHandler(async ({ payload, app }) => {
+  const { composeBackend } = await import('../shared/compose.js');
+  const { controllers, services } = await composeBackend(app);
+  if (payload.action === 'listByFIR') {
+    const data = await services.arrestService.getArrestsByFIR(payload.firNumber);
+    return { success: true, statusCode: 200, message: 'Success', data, timestamp: new Date().toISOString() };
+  }
+  return controllers.arrest.execute(payload);
+}, { functionName: 'arrest' });

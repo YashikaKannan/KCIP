@@ -19,10 +19,27 @@ export class NotificationController extends BaseController {
       if (!this.service) {
         return ResponseUtil.error('Service instance not attached to controller.', 'SERVICE_MISSING', 500);
       }
-      const data = await this.service.sendNotification(payload?.recipientId, payload?.title, payload?.message);
-      return ResponseUtil.success(data);
+      if (payload?.action === 'list') {
+        const data = await this.service.getByRecipient(payload.recipientId, payload);
+        return ResponseUtil.success(data);
+      }
+      if (payload?.action === 'markRead') {
+        const data = await this.service.markAsRead(payload.notificationId || payload.id);
+        return ResponseUtil.success(data);
+      }
+      if (payload?.action === 'unread') {
+        const data = await this.service.getUnread(payload.recipientId);
+        return ResponseUtil.success(data);
+      }
+      const data = await this.service.sendNotification(
+        payload?.recipientId,
+        payload?.title,
+        payload?.message,
+        payload?.type
+      );
+      return ResponseUtil.success(data, 'Notification sent', 201);
     } catch (error) {
-      return ResponseUtil.error(error.message, 'EXECUTION_FAILED', 400);
+      return ResponseUtil.error(error.message, 'EXECUTION_FAILED', error.statusCode || 400);
     }
   }
 }

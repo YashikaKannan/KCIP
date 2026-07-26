@@ -1,17 +1,23 @@
 /**
- * 
- * @param {import('./types/basicio').Context} context 
- * @param {import('./types/basicio').BasicIO} basicIO 
+ * Catalyst Basic I/O — getDashboard
  */
-module.exports = (context, basicIO) => {
-	/* 
-        BASICIO FUNCTIONALITIES
-    */
-	basicIO.write('Hello from index.js'); //response stream (accepts only string, throws error if other than string)
-	basicIO.getArgument('argument1'); // returns QUERY_PARAM[argument1] || BODY_JSON[argument1] (takes argument from query and body, first preference to query)
-	/* 
-        CONTEXT FUNCTIONALITIES
-    */
-	console.log('successfully executed basicio functions');
-	context.close(); //end of application
-};
+const { createBasicIOHandler } = require('../shared/cjsBridge.cjs');
+
+module.exports = createBasicIOHandler(async ({ payload, app }) => {
+  const { composeBackend } = await import('../shared/compose.js');
+  const { controllers } = await composeBackend(app);
+
+  if (payload.action === 'map' || payload.action === 'crimeMap') {
+    return controllers.analytics.getCrimeMap(payload);
+  }
+  if (payload.action === 'categories') {
+    return controllers.analytics.getCategories(payload);
+  }
+  if (payload.action === 'officers') {
+    return controllers.analytics.getOfficerStatistics(payload);
+  }
+  if (payload.action === 'trends') {
+    return controllers.analytics.execute(payload);
+  }
+  return controllers.dashboard.execute(payload);
+}, { functionName: 'dashboard' });
