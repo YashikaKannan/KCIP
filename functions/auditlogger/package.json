@@ -1,0 +1,9 @@
+{
+	"name": "auditlogger",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "y",
+	"dependencies": {
+		"zcatalyst-sdk-node": "latest"
+	}
+}
