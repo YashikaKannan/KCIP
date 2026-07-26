@@ -29,16 +29,17 @@ As crime becomes increasingly interconnected, law enforcement agencies require i
 
 #  Our Solution
 
-**KCIP (Karnataka Crime Intelligence Platform)** is an AI-powered Decision Support System built on **Zoho Catalyst** that enhances the existing Karnataka Police ecosystem by introducing an Intelligence Layer.
+**KCIP (Karnataka Crime Intelligence Platform)** is an AI-powered Crime Intelligence and Decision Support System built on Zoho Catalyst that enhances the existing Karnataka State Police and State Crime Records Bureau (SCRB) ecosystem by introducing an intelligent analytics layer.
 
-Rather than replacing the existing FIR management system, KCIP continuously analyzes operational data to:
+Rather than replacing the existing FIR management system, KCIP continuously analyzes operational crime data to:
 
-* Detect crime hotspots
-* Identify repeat offenders
-* Discover hidden relationships between cases
-* Predict high-risk crime locations
+* Detect crime hotspots and emerging trends
+* Identify repeat offenders and behavioral patterns (Modus Operandi)
+* Discover hidden relationships between suspects, victims, and cases
+* Correlate crime patterns with socio-economic indicators
+* Detect anomalies and predict high-risk crime locations
 * Generate explainable AI recommendations
-* Assist officers with proactive policing
+* Assist Karnataka Police and SCRB with proactive, evidence-based policing
 
 ---
 
