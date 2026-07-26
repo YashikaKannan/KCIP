@@ -95,3 +95,34 @@
   }
   html, body, #root { height: 100%; }
 }
+
+/* Trap Leaflet's internal z-indexes (which climb to ~1000 on controls) inside
+   the map container so Radix portals (dropdowns, dialogs) always overlay it. */
+.leaflet-container {
+  isolation: isolate;
+  position: relative;
+  z-index: 0;
+  font-family: inherit;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--card);
+  color: var(--foreground);
+  border-radius: calc(var(--radius) - 2px);
+  box-shadow: 0 8px 24px -8px oklch(0.20 0.04 260 / 0.18);
+}
+.leaflet-popup-content { margin: 12px 14px; font-size: 12px; }
+.leaflet-tooltip {
+  background: var(--card);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 11px;
+  padding: 4px 8px;
+  box-shadow: 0 4px 12px -4px oklch(0.20 0.04 260 / 0.15);
+}
+.leaflet-control-zoom a {
+  background: var(--card) !important;
+  color: var(--foreground) !important;
+  border-color: var(--border) !important;
+}

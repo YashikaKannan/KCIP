@@ -1,3 +1,4 @@
+import { Toaster } from "sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -79,6 +80,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <AppLayout />
+      <Toaster position="top-right" richColors closeButton />
     </QueryClientProvider>
   );
 }
