@@ -1,0 +1,7 @@
+{
+  "name": "kcip-functions-shared",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared ESM utilities for KCIP Catalyst functions"
+}
