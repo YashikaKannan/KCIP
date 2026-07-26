@@ -1,0 +1,1554 @@
+{
+  "tables": [
+    {
+      "name": "State",
+      "columns": [
+        {
+          "name": "StateID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "StateName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 100
+        },
+        {
+          "name": "NationalityID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "Active",
+          "type": "Boolean",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "District",
+      "columns": [
+        {
+          "name": "DistrictID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "DistrictName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 100
+        },
+        {
+          "name": "StateID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "Active",
+          "type": "Boolean",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "UnitType",
+      "columns": [
+        {
+          "name": "UnitTypeID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "UnitTypeName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 100
+        },
+        {
+          "name": "CityDistState",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 50
+        },
+        {
+          "name": "Hierarchy",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "Active",
+          "type": "Boolean",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "Unit",
+      "columns": [
+        {
+          "name": "UnitID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "UnitName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 150
+        },
+        {
+          "name": "TypeID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "ParentUnit",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "NationalityID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "StateID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "DistrictID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "Active",
+          "type": "Boolean",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "Rank",
+      "columns": [
+        {
+          "name": "RankID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "RankName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 100
+        },
+        {
+          "name": "Hierarchy",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "Active",
+          "type": "Boolean",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "Designation",
+      "columns": [
+        {
+          "name": "DesignationID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "DesignationName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 100
+        },
+        {
+          "name": "Active",
+          "type": "Boolean",
+          "is_mandatory": true
+        },
+        {
+          "name": "SortOrder",
+          "type": "Int",
+          "is_mandatory": false
+        }
+      ]
+    },
+    {
+      "name": "Employee",
+      "columns": [
+        {
+          "name": "EmployeeID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "DistrictID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "UnitID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "RankID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "DesignationID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "KGID",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 50,
+          "is_unique": true
+        },
+        {
+          "name": "FirstName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 100
+        },
+        {
+          "name": "EmployeeDOB",
+          "type": "DateTime",
+          "is_mandatory": false
+        },
+        {
+          "name": "GenderID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "BloodGroupID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "PhysicallyChallenged",
+          "type": "Boolean",
+          "is_mandatory": true
+        },
+        {
+          "name": "AppointmentDate",
+          "type": "DateTime",
+          "is_mandatory": false
+        }
+      ]
+    },
+    {
+      "name": "Court",
+      "columns": [
+        {
+          "name": "CourtID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "CourtName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 200
+        },
+        {
+          "name": "DistrictID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "StateID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "Active",
+          "type": "Boolean",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "CaseCategory",
+      "columns": [
+        {
+          "name": "CaseCategoryID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "LookupValue",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 100
+        }
+      ]
+    },
+    {
+      "name": "GravityOffence",
+      "columns": [
+        {
+          "name": "GravityOffenceID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "LookupValue",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 100
+        }
+      ]
+    },
+    {
+      "name": "CrimeHead",
+      "columns": [
+        {
+          "name": "CrimeHeadID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "CrimeGroupName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 200
+        },
+        {
+          "name": "Active",
+          "type": "Boolean",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "CrimeSubHead",
+      "columns": [
+        {
+          "name": "CrimeSubHeadID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "CrimeHeadID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "CrimeHeadName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 200
+        },
+        {
+          "name": "SeqID",
+          "type": "Int",
+          "is_mandatory": false
+        }
+      ]
+    },
+    {
+      "name": "Act",
+      "columns": [
+        {
+          "name": "ActCode",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 50,
+          "is_unique": true
+        },
+        {
+          "name": "ActDescription",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 500
+        },
+        {
+          "name": "ShortName",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 100
+        },
+        {
+          "name": "Active",
+          "type": "Boolean",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "Section",
+      "columns": [
+        {
+          "name": "ActCode",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 50
+        },
+        {
+          "name": "SectionCode",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 50
+        },
+        {
+          "name": "SectionDescription",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 500
+        },
+        {
+          "name": "Active",
+          "type": "Boolean",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "CrimeHeadActSection",
+      "columns": [
+        {
+          "name": "CrimeHeadID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "ActCode",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 50
+        },
+        {
+          "name": "SectionCode",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 100
+        }
+      ]
+    },
+    {
+      "name": "CaseStatusMaster",
+      "columns": [
+        {
+          "name": "CaseStatusID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "CaseStatusName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 100
+        }
+      ]
+    },
+    {
+      "name": "OccupationMaster",
+      "columns": [
+        {
+          "name": "OccupationID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "OccupationName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 150
+        }
+      ]
+    },
+    {
+      "name": "ReligionMaster",
+      "columns": [
+        {
+          "name": "ReligionID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "ReligionName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 100
+        }
+      ]
+    },
+    {
+      "name": "CasteMaster",
+      "columns": [
+        {
+          "name": "caste_master_id",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "caste_master_name",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 150
+        }
+      ]
+    },
+    {
+      "name": "CaseMaster",
+      "columns": [
+        {
+          "name": "CaseMasterID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "CrimeNo",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 30
+        },
+        {
+          "name": "CaseNo",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 20
+        },
+        {
+          "name": "CrimeRegisteredDate",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "PolicePersonID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "PoliceStationID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "CaseCategoryID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "GravityOffenceID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "CrimeMajorHeadID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "CrimeMinorHeadID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "CaseStatusID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "CourtID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "IncidentFromDate",
+          "type": "DateTime",
+          "is_mandatory": false
+        },
+        {
+          "name": "IncidentToDate",
+          "type": "DateTime",
+          "is_mandatory": false
+        },
+        {
+          "name": "InfoReceivedPSDate",
+          "type": "DateTime",
+          "is_mandatory": false
+        },
+        {
+          "name": "latitude",
+          "type": "Double",
+          "is_mandatory": false
+        },
+        {
+          "name": "longitude",
+          "type": "Double",
+          "is_mandatory": false
+        },
+        {
+          "name": "BriefFacts",
+          "type": "Text",
+          "is_mandatory": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "UpdatedAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "Inv_OccuranceTime",
+      "columns": [
+        {
+          "name": "OccuranceTimeID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "CaseMasterID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "OccuranceFromDate",
+          "type": "DateTime",
+          "is_mandatory": false
+        },
+        {
+          "name": "OccuranceToDate",
+          "type": "DateTime",
+          "is_mandatory": false
+        },
+        {
+          "name": "LocationDescription",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 500
+        },
+        {
+          "name": "Latitude",
+          "type": "Double",
+          "is_mandatory": false
+        },
+        {
+          "name": "Longitude",
+          "type": "Double",
+          "is_mandatory": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "ComplainantDetails",
+      "columns": [
+        {
+          "name": "ComplainantID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "CaseMasterID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "ComplainantName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 200
+        },
+        {
+          "name": "AgeYear",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "OccupationID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "ReligionID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "CasteID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "GenderID",
+          "type": "Int",
+          "is_mandatory": false
+        }
+      ]
+    },
+    {
+      "name": "ActSectionAssociation",
+      "columns": [
+        {
+          "name": "CaseMasterID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "ActID",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 50
+        },
+        {
+          "name": "SectionID",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 50
+        },
+        {
+          "name": "ActOrderID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "SectionOrderID",
+          "type": "Int",
+          "is_mandatory": false
+        }
+      ]
+    },
+    {
+      "name": "Victim",
+      "columns": [
+        {
+          "name": "VictimMasterID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "CaseMasterID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "VictimName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 200
+        },
+        {
+          "name": "AgeYear",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "GenderID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "VictimPolice",
+          "type": "Boolean",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "Accused",
+      "columns": [
+        {
+          "name": "AccusedMasterID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "CaseMasterID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "AccusedName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 200
+        },
+        {
+          "name": "AgeYear",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "GenderID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "PersonID",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 10
+        }
+      ]
+    },
+    {
+      "name": "ArrestSurrender",
+      "columns": [
+        {
+          "name": "ArrestSurrenderID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "CaseMasterID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "ArrestSurrenderTypeID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "ArrestSurrenderDate",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "ArrestSurrenderStateId",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "ArrestSurrenderDistrictId",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "PoliceStationID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "IOID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "CourtID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "AccusedMasterID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "IsAccused",
+          "type": "Boolean",
+          "is_mandatory": true
+        },
+        {
+          "name": "IsComplainantAccused",
+          "type": "Boolean",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "inv_arrestsurrenderaccused",
+      "columns": [
+        {
+          "name": "ArrestSurrenderID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "AccusedMasterID",
+          "type": "Int",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "ChargesheetDetails",
+      "columns": [
+        {
+          "name": "CSID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "CaseMasterID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "csdate",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "cstype",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 1
+        },
+        {
+          "name": "PolicePersonID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "CreatedAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "CrimePrediction",
+      "columns": [
+        {
+          "name": "PredictionID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "CaseMasterID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "DistrictID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "UnitID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "CrimeHeadID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "PredictionDate",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "PredictionType",
+          "type": "VarChar",
+          "is_mandatory": true
+        },
+        {
+          "name": "RiskLevel",
+          "type": "VarChar",
+          "is_mandatory": true
+        },
+        {
+          "name": "ConfidenceScore",
+          "type": "Double",
+          "is_mandatory": false
+        },
+        {
+          "name": "PredictionWindow",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "ModelVersion",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 50
+        },
+        {
+          "name": "ModelParameters",
+          "type": "Text",
+          "is_mandatory": false
+        },
+        {
+          "name": "PredictionStatus",
+          "type": "VarChar",
+          "is_mandatory": true
+        },
+        {
+          "name": "ValidationNotes",
+          "type": "Text",
+          "is_mandatory": false
+        },
+        {
+          "name": "ValidatedBy",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "ValidatedAt",
+          "type": "DateTime",
+          "is_mandatory": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "UpdatedAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "CrimeHotspot",
+      "columns": [
+        {
+          "name": "HotspotID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "DistrictID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "UnitID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "CrimeHeadID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "HotspotName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 200
+        },
+        {
+          "name": "CenterLatitude",
+          "type": "Double",
+          "is_mandatory": true
+        },
+        {
+          "name": "CenterLongitude",
+          "type": "Double",
+          "is_mandatory": true
+        },
+        {
+          "name": "RadiusMeters",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "BoundaryGeoJSON",
+          "type": "Text",
+          "is_mandatory": false
+        },
+        {
+          "name": "CrimeCount",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "RiskLevel",
+          "type": "VarChar",
+          "is_mandatory": true
+        },
+        {
+          "name": "HotspotStatus",
+          "type": "VarChar",
+          "is_mandatory": true
+        },
+        {
+          "name": "AnalysisPeriodFrom",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "AnalysisPeriodTo",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "LastUpdated",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "CreatedAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "CrimeAssociation",
+      "columns": [
+        {
+          "name": "AssociationID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "SourceCaseMasterID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "TargetCaseMasterID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "AssociationType",
+          "type": "VarChar",
+          "is_mandatory": true
+        },
+        {
+          "name": "AssociationStrength",
+          "type": "Double",
+          "is_mandatory": false
+        },
+        {
+          "name": "AssociationNotes",
+          "type": "Text",
+          "is_mandatory": false
+        },
+        {
+          "name": "DetectedBy",
+          "type": "VarChar",
+          "is_mandatory": true
+        },
+        {
+          "name": "CreatedAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "RepeatOffender",
+      "columns": [
+        {
+          "name": "RepeatOffenderID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "AccusedMasterID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "TotalCases",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "TotalArrests",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "FirstOffenseDate",
+          "type": "DateTime",
+          "is_mandatory": false
+        },
+        {
+          "name": "LastOffenseDate",
+          "type": "DateTime",
+          "is_mandatory": false
+        },
+        {
+          "name": "PrimaryMO",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 500
+        }
+      ]
+    },
+    {
+      "name": "MOProfile",
+      "columns": [
+        {
+          "name": "MOProfileID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "AccusedMasterID",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "CrimeHeadID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "PreferredTimeOfDay",
+          "type": "VarChar",
+          "is_mandatory": false
+        },
+        {
+          "name": "PreferredDayOfWeek",
+          "type": "VarChar",
+          "is_mandatory": false
+        },
+        {
+          "name": "TypicalMethod",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 500
+        },
+        {
+          "name": "TypicalLocation",
+          "type": "VarChar",
+          "is_mandatory": false
+        },
+        {
+          "name": "ToolsUsed",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 300
+        },
+        {
+          "name": "TargetProfile",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 500
+        },
+        {
+          "name": "GeographicRange",
+          "type": "Double",
+          "is_mandatory": false
+        },
+        {
+          "name": "AverageIncidentDurationMins",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "PatternConfidence",
+          "type": "Double",
+          "is_mandatory": false
+        },
+        {
+          "name": "LinkedCaseCount",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "CreatedAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "UpdatedAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "DashboardCache",
+      "columns": [
+        {
+          "name": "CacheID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "CacheKey",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 255,
+          "is_unique": true
+        },
+        {
+          "name": "CacheScope",
+          "type": "VarChar",
+          "is_mandatory": true
+        },
+        {
+          "name": "ScopeID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "CacheData",
+          "type": "Text",
+          "is_mandatory": true
+        },
+        {
+          "name": "GeneratedAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "ExpiresAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "HitCount",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "LastAccessed",
+          "type": "DateTime",
+          "is_mandatory": false
+        },
+        {
+          "name": "IsValid",
+          "type": "Boolean",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "AuditLog",
+      "columns": [
+        {
+          "name": "AuditID",
+          "type": "BigInt",
+          "is_mandatory": true
+        },
+        {
+          "name": "TableName",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 100
+        },
+        {
+          "name": "RecordID",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 50
+        },
+        {
+          "name": "OperationType",
+          "type": "VarChar",
+          "is_mandatory": true
+        },
+        {
+          "name": "OldValue",
+          "type": "Text",
+          "is_mandatory": false
+        },
+        {
+          "name": "NewValue",
+          "type": "Text",
+          "is_mandatory": false
+        },
+        {
+          "name": "ChangedBy",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "ChangedByKGID",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 50
+        },
+        {
+          "name": "ChangeTimestamp",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "IPAddress",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 45
+        },
+        {
+          "name": "UserAgent",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 500
+        },
+        {
+          "name": "SessionID",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 255
+        },
+        {
+          "name": "ChangeReason",
+          "type": "VarChar",
+          "is_mandatory": false,
+          "max_length": 500
+        },
+        {
+          "name": "IsReversible",
+          "type": "Boolean",
+          "is_mandatory": true
+        },
+        {
+          "name": "ReversedAt",
+          "type": "DateTime",
+          "is_mandatory": false
+        },
+        {
+          "name": "ReversedBy",
+          "type": "Int",
+          "is_mandatory": false
+        }
+      ]
+    },
+    {
+      "name": "AIAlert",
+      "columns": [
+        {
+          "name": "AlertID",
+          "type": "Int",
+          "is_mandatory": true,
+          "is_unique": true
+        },
+        {
+          "name": "AlertType",
+          "type": "VarChar",
+          "is_mandatory": true
+        },
+        {
+          "name": "AlertSeverity",
+          "type": "VarChar",
+          "is_mandatory": true
+        },
+        {
+          "name": "AlertTitle",
+          "type": "VarChar",
+          "is_mandatory": true,
+          "max_length": 300
+        },
+        {
+          "name": "AlertDescription",
+          "type": "Text",
+          "is_mandatory": true
+        },
+        {
+          "name": "RelatedCaseMasterID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "RelatedHotspotID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "RelatedPredictionID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "RelatedDistrictID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "RelatedUnitID",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "AlertStatus",
+          "type": "VarChar",
+          "is_mandatory": true
+        },
+        {
+          "name": "AssignedTo",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "AcknowledgedAt",
+          "type": "DateTime",
+          "is_mandatory": false
+        },
+        {
+          "name": "ResolvedAt",
+          "type": "DateTime",
+          "is_mandatory": false
+        },
+        {
+          "name": "ResolutionNotes",
+          "type": "Text",
+          "is_mandatory": false
+        },
+        {
+          "name": "AutoGenerated",
+          "type": "Boolean",
+          "is_mandatory": true
+        },
+        {
+          "name": "CreatedAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "UpdatedAt",
+          "type": "DateTime",
+          "is_mandatory": true
+        }
+      ]
+    }
+  ]
+}

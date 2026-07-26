@@ -1,0 +1,36 @@
+{
+  "functions": {
+    "source": "functions",
+    "ignore": [],
+    "targets": [
+      "authentication",
+      "registerfir",
+      "getfir",
+      "updatefir",
+      "deletefir",
+      "victim",
+      "accused",
+      "arrest",
+      "chargesheet",
+      "dashboard",
+      "crimeprediction",
+      "hotspotdetection",
+      "graphanalysis",
+      "repeatoffender",
+      "generatereport",
+      "uploadevidence",
+      "notifications",
+      "auditlogger"
+    ]
+  },
+  "appsail": [
+    {
+      "source": "backend",
+      "name": "KCIP"
+    }
+  ],
+  "client": {
+    "source": "react-app",
+    "plugin": "zcatalyst-cli-plugin-react"
+  }
+}

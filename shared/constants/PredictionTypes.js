@@ -1,0 +1,9 @@
+/**
+ * @file PredictionTypes.js
+ * @description AI/ML Crime Intelligence Prediction Model Output Categories
+ * @author KCIP Engineering Team
+ * @version 1.0.0
+ * @lastUpdated 2026-07-25
+ */
+
+export const PredictionTypes = Object.freeze({ HOTSPOT_FORECAST: 'HOTSPOT_FORECAST', CRIME_SPIKE_PREDICTION: 'CRIME_SPIKE_PREDICTION', REPEAT_OFFENDER_RISK: 'REPEAT_OFFENDER_RISK', RECIDIVISM_PROBABILITY: 'RECIDIVISM_PROBABILITY', SPATIAL_TEMPORAL_PATTERNS: 'SPATIAL_TEMPORAL_PATTERNS', MODUS_OPERANDI_MATCHING: 'MODUS_OPERANDI_MATCHING' });

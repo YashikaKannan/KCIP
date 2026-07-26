@@ -1,0 +1,3 @@
+PredictionID,CaseMasterID,DistrictID,UnitID,CrimeHeadID,PredictionDate,PredictionType,RiskLevel,ConfidenceScore,PredictionWindow,ModelVersion,PredictionStatus
+1,,1,2,2,2026-07-28,HOTSPOT,HIGH,82.5,7,v1.4.2,ACTIVE
+2,,1,1,1,2026-07-28,RECURRENCE,MEDIUM,65,14,v2.1.0,PENDING

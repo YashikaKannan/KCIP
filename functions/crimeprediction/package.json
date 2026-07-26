@@ -1,0 +1,9 @@
+{
+	"name": "crimeprediction",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "abcd",
+	"dependencies": {
+		"zcatalyst-sdk-node": "latest"
+	}
+}

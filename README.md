@@ -463,6 +463,51 @@ KCIP is not just another crime dashboard—it is an **AI-powered Crime Intellige
 
 ---
 
+# 🛠️ Database Automation Framework
+
+KCIP includes a python-based Database Automation Framework built to treat `database/schema.sql` and `database/intelligence_tables.sql` as the absolute source of truth. Whenever the SQL definitions change, the entire relational, JSON datastore schemas, and backend entity classes automatically regenerate.
+
+### Architecture & Folder Structure
+- **`scripts/sql_parser.py`**: A custom DDL parsing parser that converts standard SQL tables, datatypes, lengths, primary keys, foreign keys, constraints, and comments into structured python dictionaries.
+- **`scripts/generate_datastore.py`**: Uses the parser to output:
+  - `database/generated/datastore-schema.json`: Complete JSON datastore schema for Catalyst import.
+  - `database/generated/catalyst_tables.json`: Minimized column index reference.
+  - `database/generated/table_metadata.json`: Statistics and metadata logs.
+- **`scripts/generate_api_models.py`**: Generates typed python dataclasses for every table under `database/generated/api_models/` and generates the lookup mapping index `database/generated/api_models.json`.
+- **`scripts/generate_documentation.py`**: Generates deployment and review reports:
+  - `database/generated/deployment_report.md`: Detailed schema relationships, warnings, and compatibility logs.
+  - `database/generated/catalyst_manual_deployment.md`: Step-by-step console layout for manual table definitions.
+- **`scripts/validate_schema.py`**: Asserts integrity alignment by verifying missing tables, columns, or type mismatches between the source DDL and Catalyst JSON targets.
+- **`scripts/watch_schema.py`**: A lightweight background daemon that watches the database DDL files and triggers immediate regeneration on save.
+
+### Regeneration Workflow
+To run a one-time build regeneration of all schemas, models, and docs:
+```bash
+python scripts/generate_datastore.py; python scripts/generate_api_models.py; python scripts/generate_documentation.py; python scripts/validate_schema.py
+```
+
+### Auto-Regeneration on File Changes (Watcher)
+To start the daemon monitoring for DDL changes:
+```bash
+python scripts/watch_schema.py
+```
+
+### Consumption in Serverless Functions
+Backend serverless APIs and functions consume the generated dataclasses directly from `database/generated/api_models/` for request verification, object parsing, and type-safe database interactions with Catalyst SDK:
+```python
+from database.generated.api_models.CaseMaster import CaseMaster
+
+# Populate and sanitize CaseMaster records before datastore insert
+new_case = CaseMaster(
+    CrimeNo="100010001202600001",
+    CaseNo="202600001",
+    CrimeRegisteredDate="2026-07-26",
+    ...
+)
+```
+
+---
+
 ## 📄 License
 
 This project is developed for the **Zoho Catalyst Hackathon** and is intended for educational and demonstration purposes.
