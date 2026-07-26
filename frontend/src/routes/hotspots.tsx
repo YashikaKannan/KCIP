@@ -1,12 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Card } from "@/components/ui/card";
-import { hotspots } from "@/data/mockData";
 import { Badge } from "@/components/ui/badge";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 import { Flame } from "lucide-react";
-
-const trend = Array.from({ length: 10 }, (_, i) => ({ week: `W${i+1}`, risk: 40 + Math.round(Math.random() * 55) }));
+import { useDashboardHotspots, useDashboardSummary } from "@/hooks/api/useKcipQueries";
 
 export const Route = createFileRoute("/hotspots")({
   head: () => ({ meta: [
@@ -15,7 +13,16 @@ export const Route = createFileRoute("/hotspots")({
     { property: "og:title", content: "Crime Hotspots — KCIP" },
     { property: "og:description", content: "Risk scoring and hotspot analytics." },
   ]}),
-  component: () => (
+  component: CrimeHotspotsPage,
+});
+
+function CrimeHotspotsPage() {
+  const hotspotsQuery = useDashboardHotspots();
+  const summaryQuery = useDashboardSummary();
+  const hotspots = hotspotsQuery.data ?? [];
+  const trend = summaryQuery.data?.weeklyTrends?.map((item) => ({ week: item.week, risk: item.cases })) ?? [];
+
+  return (
     <>
       <PageHeader title="Crime Hotspots" description="Areas with elevated risk scores" breadcrumbs={[{ label: "Home" }, { label: "Hotspots" }]} />
 
@@ -60,5 +67,5 @@ export const Route = createFileRoute("/hotspots")({
         </div>
       </Card>
     </>
-  ),
-});
+  );
+}

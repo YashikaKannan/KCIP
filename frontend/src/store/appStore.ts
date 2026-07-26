@@ -1,9 +1,4 @@
 import { create } from "zustand";
-import {
-  firs as seedFirs,
-  reports as seedReports,
-  notifications as seedNotifications,
-} from "@/data/mockData";
 
 export type UserRole =
   | "SCRB Administrator"
@@ -87,16 +82,20 @@ interface AppState {
     phone: string;
     designation: string;
   };
+  setUser: (user: AppState["user"]) => void;
   setRole: (role: UserRole) => void;
   updateProfile: (patch: Partial<AppState["user"]>) => void;
 
   firs: FIRRecord[];
+  setFirs: (firs: FIRRecord[]) => void;
   addFIR: (fir: FIRRecord) => void;
 
   reports: ReportRecord[];
+  setReports: (reports: ReportRecord[]) => void;
   addReport: (r: ReportRecord) => void;
 
   notifications: NotificationRecord[];
+  setNotifications: (notifications: NotificationRecord[]) => void;
   markRead: (id: string) => void;
   markAllRead: () => void;
   deleteNotification: (id: string) => void;
@@ -111,23 +110,27 @@ export const useAppStore = create<AppState>((set) => ({
   toggleSidebar: () => set((s) => ({ sidebarCollapsed: !s.sidebarCollapsed })),
 
   user: {
-    name: "R. Sharma",
-    role: "SCRB Administrator",
-    district: "Bengaluru Urban",
-    email: "r.sharma@ksp.gov.in",
-    phone: "+91 98450 12345",
-    designation: "Deputy Inspector General",
+    name: "",
+    role: "Viewer",
+    district: "",
+    email: "",
+    phone: "",
+    designation: "",
   },
+  setUser: (user) => set(() => ({ user })),
   setRole: (role) => set((s) => ({ user: { ...s.user, role } })),
   updateProfile: (patch) => set((s) => ({ user: { ...s.user, ...patch } })),
 
-  firs: seedFirs as FIRRecord[],
+  firs: [],
+  setFirs: (firs) => set(() => ({ firs })),
   addFIR: (fir) => set((s) => ({ firs: [fir, ...s.firs] })),
 
-  reports: seedReports as ReportRecord[],
+  reports: [],
+  setReports: (reports) => set(() => ({ reports })),
   addReport: (r) => set((s) => ({ reports: [r, ...s.reports] })),
 
-  notifications: seedNotifications as NotificationRecord[],
+  notifications: [],
+  setNotifications: (notifications) => set(() => ({ notifications })),
   markRead: (id) =>
     set((s) => ({ notifications: s.notifications.map((n) => (n.id === id ? { ...n, read: true } : n)) })),
   markAllRead: () =>

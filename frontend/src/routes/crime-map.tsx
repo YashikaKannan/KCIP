@@ -3,7 +3,6 @@ import { lazy, Suspense, useState } from "react";
 import { ClientOnly } from "@tanstack/react-router";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Card } from "@/components/ui/card";
-import { districts, crimeCategories } from "@/data/mockData";
 import {
   Select,
   SelectContent,
@@ -11,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useDistricts, useCrimeHeads } from "@/hooks/api/useKcipQueries";
 
 const MapView = lazy(() => import("@/components/map/MapView"));
 
@@ -30,6 +30,10 @@ function CrimeMapPage() {
   const [district, setDistrict] = useState<string>("all");
   const [type, setType] = useState<string>("all");
   const [mode, setMode] = useState<"markers" | "cluster" | "heat">("markers");
+  const districtsQuery = useDistricts();
+  const crimeHeadsQuery = useCrimeHeads();
+  const districts = districtsQuery.data ?? [];
+  const crimeCategories = crimeHeadsQuery.data?.map((head) => head.name) ?? [];
 
   return (
     <>

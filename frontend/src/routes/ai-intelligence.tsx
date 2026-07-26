@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { aiInsights } from "@/data/mockData";
 import { Brain, Sparkles, Users, Activity, Link2, Lightbulb } from "lucide-react";
+import { useAiInsights } from "@/hooks/api/useKcipQueries";
 
 const icons = { Pattern: Sparkles, Behavior: Users, Correlation: Link2, Trend: Activity } as const;
 
@@ -14,7 +14,14 @@ export const Route = createFileRoute("/ai-intelligence")({
     { property: "og:title", content: "AI Intelligence — KCIP" },
     { property: "og:description", content: "AI-powered insights, patterns, and explainability." },
   ]}),
-  component: () => (
+  component: AIIntelligencePage,
+});
+
+function AIIntelligencePage() {
+  const { data } = useAiInsights();
+  const aiInsights = data ?? [];
+
+  return (
     <>
       <PageHeader title="AI Intelligence" description="Patterns, behaviors, correlations, and emerging trends" breadcrumbs={[{ label: "Home" }, { label: "AI Intelligence" }]} />
 
@@ -44,5 +51,5 @@ export const Route = createFileRoute("/ai-intelligence")({
         })}
       </div>
     </>
-  ),
-});
+  );
+}

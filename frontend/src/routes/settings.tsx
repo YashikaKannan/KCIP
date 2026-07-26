@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { useAppStore } from "@/store/appStore";
-import { districts, auditLogs } from "@/data/mockData";
+import { useAuditLogs, useDashboardBootstrap } from "@/hooks/api/useKcipQueries";
 
 export const Route = createFileRoute("/settings")({
   head: () => ({
@@ -34,6 +34,7 @@ export const Route = createFileRoute("/settings")({
 
 function SettingsPage() {
   const { user, updateProfile, preferences, updatePreferences } = useAppStore();
+  const bootstrap = useDashboardBootstrap();
 
   return (
     <>
@@ -54,7 +55,7 @@ function SettingsPage() {
         </TabsList>
 
         <TabsContent value="profile">
-          <ProfileTab user={user} onSave={updateProfile} />
+          <ProfileTab user={user} onSave={updateProfile} districts={bootstrap.data?.districts ?? []} />
         </TabsContent>
 
         <TabsContent value="preferences">
@@ -81,7 +82,7 @@ function SettingsPage() {
   );
 }
 
-function ProfileTab({ user, onSave }: any) {
+function ProfileTab({ user, onSave, districts }: any) {
   const [edit, setEdit] = useState(false);
   const [form, setForm] = useState(user);
   return (
@@ -117,7 +118,7 @@ function ProfileTab({ user, onSave }: any) {
           <Label>District</Label>
           <Select value={form.district} onValueChange={(v) => setForm({ ...form, district: v })} disabled={!edit}>
             <SelectTrigger><SelectValue /></SelectTrigger>
-            <SelectContent>{districts.map((d) => <SelectItem key={d} value={d}>{d}</SelectItem>)}</SelectContent>
+            <SelectContent>{districts.map((d: string) => <SelectItem key={d} value={d}>{d}</SelectItem>)}</SelectContent>
           </Select>
         </div>
       </div>
@@ -300,11 +301,12 @@ function NotificationsTab({ prefs, onUpdate }: any) {
 }
 
 function AuditTab() {
+  const { data } = useAuditLogs();
   return (
     <Card className="p-6">
       <h3 className="mb-4 text-sm font-semibold">Recent activity</h3>
       <div className="space-y-2 text-sm">
-        {auditLogs.slice(0, 8).map((a) => (
+        {(data ?? []).slice(0, 8).map((a) => (
           <div key={a.id} className="flex items-center justify-between rounded-md border border-border p-3">
             <div>
               <div className="font-medium">{a.action}</div>

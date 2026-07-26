@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/common/PageHeader";
 import { Card } from "@/components/ui/card";
 import ReactFlow, { Background, Controls, MiniMap } from "reactflow";
 import "reactflow/dist/style.css";
-import { graphNodes, graphEdges } from "@/data/mockData";
+import { useGraph } from "@/hooks/api/useKcipQueries";
 
 export const Route = createFileRoute("/crime-network")({
   head: () => ({ meta: [
@@ -21,6 +21,9 @@ export const Route = createFileRoute("/crime-network")({
 function NetworkPage() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+  const { data } = useGraph();
+  const graphNodes = data?.nodes ?? [];
+  const graphEdges = data?.edges ?? [];
   return (
     <>
       <PageHeader title="Crime Network" description="Graph of entities and their relationships" breadcrumbs={[{ label: "Home" }, { label: "Crime Network" }]} />

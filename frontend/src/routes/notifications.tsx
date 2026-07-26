@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/select";
 import { CheckCheck, Archive, Trash2, Search, Bell } from "lucide-react";
 import { useAppStore } from "@/store/appStore";
+import { useNotifications } from "@/hooks/api/useKcipQueries";
 
 export const Route = createFileRoute("/notifications")({
   head: () => ({
@@ -29,7 +30,8 @@ export const Route = createFileRoute("/notifications")({
 });
 
 function NotificationsPage() {
-  const notifications = useAppStore((s) => s.notifications);
+  const { data, isLoading, error } = useNotifications();
+  const notifications = data ?? [];
   const markRead = useAppStore((s) => s.markRead);
   const markAllRead = useAppStore((s) => s.markAllRead);
   const deleteNotification = useAppStore((s) => s.deleteNotification);
@@ -90,10 +92,12 @@ function NotificationsPage() {
       </Card>
 
       <div className="space-y-3">
-        {visible.length === 0 ? (
+        {isLoading ? (
+          <Card className="p-10 text-center text-sm text-muted-foreground">Loading notifications…</Card>
+        ) : visible.length === 0 ? (
           <Card className="flex flex-col items-center justify-center gap-2 p-10 text-sm text-muted-foreground">
             <Bell className="h-6 w-6 opacity-40" />
-            No notifications match the current filters.
+            {error ? "Failed to load notifications." : "No notifications match the current filters."}
           </Card>
         ) : (
           visible.map((n) => (

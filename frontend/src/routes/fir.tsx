@@ -23,7 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { statusColors, districts, crimeCategories } from "@/data/mockData";
+import { useCrimeHeads, useDistricts, usePoliceStations } from "@/hooks/api/useKcipQueries";
 import { useAppStore, type FIRRecord, type FIRStatus } from "@/store/appStore";
 import { Plus, Download, FileSpreadsheet, FileText, FileType2 } from "lucide-react";
 import { toast } from "sonner";
@@ -57,9 +57,21 @@ type FIRForm = {
   status: FIRStatus;
 };
 
+const statusColors: Record<FIRStatus, string> = {
+  Open: "border-blue-500/30 bg-blue-500/10 text-blue-700 dark:text-blue-300",
+  "Under Investigation": "border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300",
+  Closed: "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
+  Pending: "border-slate-500/30 bg-slate-500/10 text-slate-700 dark:text-slate-300",
+};
+
 function FIRPage() {
   const firs = useAppStore((s) => s.firs);
   const addFIR = useAppStore((s) => s.addFIR);
+  const districtsQuery = useDistricts();
+  const crimeHeadsQuery = useCrimeHeads();
+  const stationsQuery = usePoliceStations();
+  const districts = districtsQuery.data ?? [];
+  const crimeCategories = crimeHeadsQuery.data?.map((head) => head.name) ?? [];
   const [openNew, setOpenNew] = useState(false);
   const [openExport, setOpenExport] = useState(false);
   const [districtFilter, setDistrictFilter] = useState<string>("all");
@@ -155,11 +167,18 @@ function FIRPage() {
         ]}
       />
 
-      <NewFIRDialog open={openNew} onOpenChange={setOpenNew} onSubmit={(data) => {
-        addFIR({ ...data });
-        toast.success(`FIR ${data.id} created`, { description: data.title });
-        setOpenNew(false);
-      }} nextId={`FIR-2026-${1024 + firs.length}`} />
+      <NewFIRDialog
+        open={openNew}
+        onOpenChange={setOpenNew}
+        onSubmit={(data) => {
+          addFIR({ ...data });
+          toast.success(`FIR ${data.id} created`, { description: data.title });
+          setOpenNew(false);
+        }}
+        nextId={`FIR-2026-${1024 + firs.length}`}
+        districts={districts}
+        crimeCategories={crimeCategories}
+      />
 
       <ExportDialog
         open={openExport}
@@ -175,11 +194,15 @@ function NewFIRDialog({
   onOpenChange,
   onSubmit,
   nextId,
+  districts,
+  crimeCategories,
 }: {
   open: boolean;
   onOpenChange: (v: boolean) => void;
   onSubmit: (data: FIRRecord) => void;
   nextId: string;
+  districts: string[];
+  crimeCategories: string[];
 }) {
   const {
     register,

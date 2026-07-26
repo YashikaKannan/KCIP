@@ -10,9 +10,19 @@ import { DataTable } from "@/components/common/DataTable";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  summaryStats, crimeTrend, districtComparison, crimeDistribution,
-  firs, aiInsights, notifications, hotspots, statusColors,
-} from "@/data/mockData";
+  useAiInsights,
+  useDashboardHotspots,
+  useDashboardRecentCases,
+  useDashboardSummary,
+  useNotifications,
+} from "@/hooks/api/useKcipQueries";
+
+const statusColors = {
+  Open: "bg-warning/15 text-warning border-warning/30",
+  Closed: "bg-success/15 text-success border-success/30",
+  "Under Investigation": "bg-primary/10 text-primary border-primary/30",
+  Pending: "bg-muted text-muted-foreground border-border",
+} as const;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,6 +39,25 @@ export const Route = createFileRoute("/")({
 const chartColors = ["#2563EB", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6", "#06B6D4", "#EC4899", "#84CC16"];
 
 function Dashboard() {
+  const summaryQuery = useDashboardSummary();
+  const hotspotsQuery = useDashboardHotspots();
+  const recentCasesQuery = useDashboardRecentCases(8);
+  const aiInsightsQuery = useAiInsights();
+  const notificationsQuery = useNotifications();
+
+  if (summaryQuery.isLoading || hotspotsQuery.isLoading || recentCasesQuery.isLoading || aiInsightsQuery.isLoading || notificationsQuery.isLoading) {
+    return <div className="p-6 text-sm text-muted-foreground">Loading dashboard data…</div>;
+  }
+
+  const summary = summaryQuery.data;
+  const hotspots = hotspotsQuery.data ?? [];
+  const recentCases = recentCasesQuery.data ?? [];
+  const aiInsights = aiInsightsQuery.data ?? [];
+  const notifications = notificationsQuery.data ?? [];
+  const crimeTrend = summary?.monthlyTrends ?? [];
+  const districtComparison = summary?.casesByDistrict ?? [];
+  const crimeDistribution = summary?.casesByCrimeHead ?? [];
+
   return (
     <>
       <PageHeader
@@ -38,10 +67,10 @@ function Dashboard() {
       />
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard label="Today's Cases" value={summaryStats.todayCases} icon={FileText} tone="primary" delta="+12 vs yesterday" />
-        <StatCard label="Open Cases" value={summaryStats.openCases.toLocaleString()} icon={FolderOpen} tone="warning" delta="Across 30 districts" />
-        <StatCard label="Solved Cases" value={summaryStats.solvedCases.toLocaleString()} icon={CheckCircle2} tone="success" delta="+3.2% MoM" />
-        <StatCard label="Pending Investigation" value={summaryStats.pending} icon={Clock} tone="danger" delta="Requires review" />
+        <StatCard label="Today's Cases" value={summary?.todayCases ?? 0} icon={FileText} tone="primary" delta="+12 vs yesterday" />
+        <StatCard label="Open Cases" value={(summary?.openCases ?? 0).toLocaleString()} icon={FolderOpen} tone="warning" delta="Across 30 districts" />
+        <StatCard label="Solved Cases" value={(summary?.solvedCases ?? 0).toLocaleString()} icon={CheckCircle2} tone="success" delta="+3.2% MoM" />
+        <StatCard label="Pending Investigation" value={summary?.pending ?? 0} icon={Clock} tone="danger" delta="Requires review" />
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
@@ -156,7 +185,7 @@ function Dashboard() {
       <div className="mt-6">
         <h3 className="mb-3 text-sm font-semibold">Recent FIRs</h3>
         <DataTable
-          rows={firs.slice(0, 8)}
+          rows={recentCases.slice(0, 8)}
           columns={[
             { key: "id", header: "FIR ID" },
             { key: "title", header: "Title" },

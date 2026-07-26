@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { auditLogs } from "@/data/mockData";
+import { useAuditLogs } from "@/hooks/api/useKcipQueries";
 
 const severityColor = {
   Info: "bg-primary/10 text-primary border-primary/30",
@@ -17,12 +17,18 @@ export const Route = createFileRoute("/audit-logs")({
     { property: "og:title", content: "Audit Logs — KCIP" },
     { property: "og:description", content: "System audit trail and user activity." },
   ]}),
-  component: () => (
+  component: AuditLogsPage,
+});
+
+function AuditLogsPage() {
+  const { data } = useAuditLogs();
+
+  return (
     <>
       <PageHeader title="Audit Logs" description="System activity timeline" breadcrumbs={[{ label: "Home" }, { label: "Audit Logs" }]} />
       <Card className="p-5">
         <ol className="relative border-l border-border pl-6">
-          {auditLogs.map((l) => (
+          {(data ?? []).map((l) => (
             <li key={l.id} className="mb-6 last:mb-0">
               <span className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full bg-primary" />
               <div className="flex items-center justify-between gap-3">
@@ -30,12 +36,12 @@ export const Route = createFileRoute("/audit-logs")({
                   <div className="text-sm font-medium">{l.action} <span className="text-muted-foreground">by {l.user}</span></div>
                   <div className="text-xs text-muted-foreground">{new Date(l.timestamp).toLocaleString()}</div>
                 </div>
-                <Badge variant="outline" className={severityColor[l.severity]}>{l.severity}</Badge>
+                <Badge variant="outline" className={severityColor[l.severity as keyof typeof severityColor]}>{l.severity}</Badge>
               </div>
             </li>
           ))}
         </ol>
       </Card>
     </>
-  ),
-});
+  );
+}

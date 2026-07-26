@@ -23,8 +23,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Download, FileBarChart } from "lucide-react";
-import { districts, crimeCategories } from "@/data/mockData";
 import { useAppStore, type ReportRecord } from "@/store/appStore";
+import { useDashboardBootstrap } from "@/hooks/api/useKcipQueries";
 
 const REPORT_TYPES = [
   "Crime Summary",
@@ -48,6 +48,7 @@ export const Route = createFileRoute("/reports")({
 });
 
 function ReportsPage() {
+  const bootstrap = useDashboardBootstrap();
   const reports = useAppStore((s) => s.reports);
   const addReport = useAppStore((s) => s.addReport);
   const user = useAppStore((s) => s.user);
@@ -139,6 +140,7 @@ function GenerateDialog({
   author: string;
   nextId: string;
 }) {
+  const bootstrap = useDashboardBootstrap();
   const [type, setType] = useState<string>(REPORT_TYPES[0]);
   const [district, setDistrict] = useState<string>("all");
   const [category, setCategory] = useState<string>("all");
@@ -189,7 +191,7 @@ function GenerateDialog({
               <SelectTrigger><SelectValue /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Districts</SelectItem>
-                {districts.map((d) => <SelectItem key={d} value={d}>{d}</SelectItem>)}
+                {(bootstrap.data?.districts ?? []).map((d) => <SelectItem key={d} value={d}>{d}</SelectItem>)}
               </SelectContent>
             </Select>
           </div>
@@ -199,7 +201,7 @@ function GenerateDialog({
               <SelectTrigger><SelectValue /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Categories</SelectItem>
-                {crimeCategories.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+                {Array.from(new Set((bootstrap.data?.recentCases ?? []).map((item) => item.category))).map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
               </SelectContent>
             </Select>
           </div>

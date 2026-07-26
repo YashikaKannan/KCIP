@@ -9,85 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as VictimsRouteImport } from './routes/victims'
-import { Route as SettingsRouteImport } from './routes/settings'
-import { Route as ReportsRouteImport } from './routes/reports'
-import { Route as PredictionsRouteImport } from './routes/predictions'
-import { Route as NotificationsRouteImport } from './routes/notifications'
-import { Route as HotspotsRouteImport } from './routes/hotspots'
-import { Route as FirRouteImport } from './routes/fir'
-import { Route as CrimeNetworkRouteImport } from './routes/crime-network'
-import { Route as CrimeMapRouteImport } from './routes/crime-map'
-import { Route as ChargeSheetsRouteImport } from './routes/charge-sheets'
-import { Route as AuditLogsRouteImport } from './routes/audit-logs'
-import { Route as ArrestsRouteImport } from './routes/arrests'
-import { Route as AiIntelligenceRouteImport } from './routes/ai-intelligence'
-import { Route as AccusedRouteImport } from './routes/accused'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AccusedRouteImport } from './routes/accused'
+import { Route as AiIntelligenceRouteImport } from './routes/ai-intelligence'
+import { Route as ArrestsRouteImport } from './routes/arrests'
+import { Route as AuditLogsRouteImport } from './routes/audit-logs'
+import { Route as ChargeSheetsRouteImport } from './routes/charge-sheets'
+import { Route as CrimeMapRouteImport } from './routes/crime-map'
+import { Route as CrimeNetworkRouteImport } from './routes/crime-network'
+import { Route as FirRouteImport } from './routes/fir'
+import { Route as HotspotsRouteImport } from './routes/hotspots'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as PredictionsRouteImport } from './routes/predictions'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as VictimsRouteImport } from './routes/victims'
 
-const VictimsRoute = VictimsRouteImport.update({
-  id: '/victims',
-  path: '/victims',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ReportsRoute = ReportsRouteImport.update({
-  id: '/reports',
-  path: '/reports',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PredictionsRoute = PredictionsRouteImport.update({
-  id: '/predictions',
-  path: '/predictions',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NotificationsRoute = NotificationsRouteImport.update({
-  id: '/notifications',
-  path: '/notifications',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HotspotsRoute = HotspotsRouteImport.update({
-  id: '/hotspots',
-  path: '/hotspots',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FirRoute = FirRouteImport.update({
-  id: '/fir',
-  path: '/fir',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CrimeNetworkRoute = CrimeNetworkRouteImport.update({
-  id: '/crime-network',
-  path: '/crime-network',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CrimeMapRoute = CrimeMapRouteImport.update({
-  id: '/crime-map',
-  path: '/crime-map',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChargeSheetsRoute = ChargeSheetsRouteImport.update({
-  id: '/charge-sheets',
-  path: '/charge-sheets',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuditLogsRoute = AuditLogsRouteImport.update({
-  id: '/audit-logs',
-  path: '/audit-logs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ArrestsRoute = ArrestsRouteImport.update({
-  id: '/arrests',
-  path: '/arrests',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AiIntelligenceRoute = AiIntelligenceRouteImport.update({
-  id: '/ai-intelligence',
-  path: '/ai-intelligence',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccusedRoute = AccusedRouteImport.update({
@@ -95,9 +35,69 @@ const AccusedRoute = AccusedRouteImport.update({
   path: '/accused',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AiIntelligenceRoute = AiIntelligenceRouteImport.update({
+  id: '/ai-intelligence',
+  path: '/ai-intelligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArrestsRoute = ArrestsRouteImport.update({
+  id: '/arrests',
+  path: '/arrests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuditLogsRoute = AuditLogsRouteImport.update({
+  id: '/audit-logs',
+  path: '/audit-logs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChargeSheetsRoute = ChargeSheetsRouteImport.update({
+  id: '/charge-sheets',
+  path: '/charge-sheets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrimeMapRoute = CrimeMapRouteImport.update({
+  id: '/crime-map',
+  path: '/crime-map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrimeNetworkRoute = CrimeNetworkRouteImport.update({
+  id: '/crime-network',
+  path: '/crime-network',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FirRoute = FirRouteImport.update({
+  id: '/fir',
+  path: '/fir',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HotspotsRoute = HotspotsRouteImport.update({
+  id: '/hotspots',
+  path: '/hotspots',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PredictionsRoute = PredictionsRouteImport.update({
+  id: '/predictions',
+  path: '/predictions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VictimsRoute = VictimsRouteImport.update({
+  id: '/victims',
+  path: '/victims',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -227,95 +227,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/victims': {
-      id: '/victims'
-      path: '/victims'
-      fullPath: '/victims'
-      preLoaderRoute: typeof VictimsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reports': {
-      id: '/reports'
-      path: '/reports'
-      fullPath: '/reports'
-      preLoaderRoute: typeof ReportsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/predictions': {
-      id: '/predictions'
-      path: '/predictions'
-      fullPath: '/predictions'
-      preLoaderRoute: typeof PredictionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notifications': {
-      id: '/notifications'
-      path: '/notifications'
-      fullPath: '/notifications'
-      preLoaderRoute: typeof NotificationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/hotspots': {
-      id: '/hotspots'
-      path: '/hotspots'
-      fullPath: '/hotspots'
-      preLoaderRoute: typeof HotspotsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/fir': {
-      id: '/fir'
-      path: '/fir'
-      fullPath: '/fir'
-      preLoaderRoute: typeof FirRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/crime-network': {
-      id: '/crime-network'
-      path: '/crime-network'
-      fullPath: '/crime-network'
-      preLoaderRoute: typeof CrimeNetworkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/crime-map': {
-      id: '/crime-map'
-      path: '/crime-map'
-      fullPath: '/crime-map'
-      preLoaderRoute: typeof CrimeMapRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/charge-sheets': {
-      id: '/charge-sheets'
-      path: '/charge-sheets'
-      fullPath: '/charge-sheets'
-      preLoaderRoute: typeof ChargeSheetsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/audit-logs': {
-      id: '/audit-logs'
-      path: '/audit-logs'
-      fullPath: '/audit-logs'
-      preLoaderRoute: typeof AuditLogsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/arrests': {
-      id: '/arrests'
-      path: '/arrests'
-      fullPath: '/arrests'
-      preLoaderRoute: typeof ArrestsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ai-intelligence': {
-      id: '/ai-intelligence'
-      path: '/ai-intelligence'
-      fullPath: '/ai-intelligence'
-      preLoaderRoute: typeof AiIntelligenceRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/accused': {
@@ -325,11 +241,95 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AccusedRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/ai-intelligence': {
+      id: '/ai-intelligence'
+      path: '/ai-intelligence'
+      fullPath: '/ai-intelligence'
+      preLoaderRoute: typeof AiIntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/arrests': {
+      id: '/arrests'
+      path: '/arrests'
+      fullPath: '/arrests'
+      preLoaderRoute: typeof ArrestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audit-logs': {
+      id: '/audit-logs'
+      path: '/audit-logs'
+      fullPath: '/audit-logs'
+      preLoaderRoute: typeof AuditLogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/charge-sheets': {
+      id: '/charge-sheets'
+      path: '/charge-sheets'
+      fullPath: '/charge-sheets'
+      preLoaderRoute: typeof ChargeSheetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crime-map': {
+      id: '/crime-map'
+      path: '/crime-map'
+      fullPath: '/crime-map'
+      preLoaderRoute: typeof CrimeMapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crime-network': {
+      id: '/crime-network'
+      path: '/crime-network'
+      fullPath: '/crime-network'
+      preLoaderRoute: typeof CrimeNetworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fir': {
+      id: '/fir'
+      path: '/fir'
+      fullPath: '/fir'
+      preLoaderRoute: typeof FirRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hotspots': {
+      id: '/hotspots'
+      path: '/hotspots'
+      fullPath: '/hotspots'
+      preLoaderRoute: typeof HotspotsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/predictions': {
+      id: '/predictions'
+      path: '/predictions'
+      fullPath: '/predictions'
+      preLoaderRoute: typeof PredictionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/victims': {
+      id: '/victims'
+      path: '/victims'
+      fullPath: '/victims'
+      preLoaderRoute: typeof VictimsRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -355,3 +355,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useAppStore, type UserRole } from "@/store/appStore";
-import { healthServices, districts } from "@/data/mockData";
+import { useDashboardBootstrap, useDashboardHealth, useDistricts } from "@/hooks/api/useKcipQueries";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -81,16 +81,31 @@ function useNow() {
 }
 
 export function AppLayout() {
-  const { sidebarCollapsed, toggleSidebar, user, setRole } = useAppStore();
+  const { sidebarCollapsed, toggleSidebar, user, setRole, setUser, setFirs, setReports, setNotifications } = useAppStore();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const now = useNow();
   const [district, setDistrict] = useState(user.district);
+  const bootstrapQuery = useDashboardBootstrap();
+  const healthQuery = useDashboardHealth();
+  const districtsQuery = useDistricts();
+
+  useEffect(() => {
+    const bootstrap = bootstrapQuery.data;
+    if (!bootstrap) return;
+    setUser(bootstrap.user);
+    setFirs(bootstrap.recentCases);
+    setReports(bootstrap.reports);
+    setNotifications(bootstrap.notifications);
+    setDistrict(bootstrap.user.district);
+  }, [bootstrapQuery.data, setDistrict, setFirs, setNotifications, setReports, setUser]);
 
   const current = allItems.find((i) => i.to === pathname)
     ?? [...allItems].sort((a, b) => b.to.length - a.to.length)
       .find((i) => i.to !== "/" && pathname.startsWith(i.to));
   const pageTitle = current?.label ?? "Dashboard";
 
+  const healthServices = healthQuery.data ?? [];
+  const districts = districtsQuery.data ?? [];
   const offlineCount = healthServices.filter((s) => s.status === "offline").length;
   const warningCount = healthServices.filter((s) => s.status === "warning").length;
   const runtimeState =

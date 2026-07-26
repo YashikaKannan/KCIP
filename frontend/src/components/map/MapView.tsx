@@ -1,10 +1,10 @@
 import { MapContainer, TileLayer, CircleMarker, Popup, Tooltip, ZoomControl } from "react-leaflet";
 import L from "leaflet";
 import { useMemo, useState } from "react";
-import { crimeMapMarkers, districts } from "@/data/mockData";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Flame, MapPin } from "lucide-react";
+import { useDashboardBootstrap } from "@/hooks/api/useKcipQueries";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -30,6 +30,15 @@ interface MapViewProps {
 
 export default function MapView({ districtFilter = "all", typeFilter = "all", mode = "markers" }: MapViewProps) {
   const [showLabels, setShowLabels] = useState(true);
+  const bootstrap = useDashboardBootstrap();
+  const crimeMapMarkers = bootstrap.data?.recentCases?.map((item, index) => ({
+    id: index + 1,
+    lat: 12.9716 + index * 0.18,
+    lng: 77.5946 + index * 0.14,
+    title: `${item.category} — ${item.district}`,
+    type: item.category,
+  })) ?? [];
+  const districts = bootstrap.data?.districts ?? [];
 
   const filtered = useMemo(
     () =>
