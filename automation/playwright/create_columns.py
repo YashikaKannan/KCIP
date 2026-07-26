@@ -76,8 +76,9 @@ class ColumnDeployment:
         if self.browser.page:
             project_base_url = self.browser.page.url.split("#")[0]
             self.browser.goto(f"{project_base_url}#/cloudscale/datastore/tables")
+        self.browser.wait_for_url("**/cloudscale/datastore/tables*", timeout=30000)
 
-        for selector in ("text=Tables List", "text=New Table", CatalystSelectors.DATA_STORE_LINK):
+        for selector in ("text=Tables List", "button:has-text('New Table')"):
             try:
                 self.browser.wait_for_selector(selector, timeout=10000)
                 break
