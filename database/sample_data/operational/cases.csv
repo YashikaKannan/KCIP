@@ -1,0 +1,3 @@
+CaseMasterID,CrimeNo,CaseNo,CrimeRegisteredDate,PolicePersonID,PoliceStationID,CaseCategoryID,GravityOffenceID,CrimeMajorHeadID,CrimeMinorHeadID,CaseStatusID,CourtID,latitude,longitude,BriefFacts
+1,100010001202600001,202600001,2026-01-10,1,1,1,1,1,2,1,,12.971598,77.594562,Dispute over property.
+2,100010002202600002,202600002,2026-02-15,2,2,1,2,2,4,1,,12.935242,77.624461,House break-in robbery.

@@ -1,0 +1,1870 @@
+{
+  "State": {
+    "table_name": "State",
+    "fields": {
+      "StateID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "StateName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "NationalityID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "Active": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      }
+    },
+    "primary_keys": [
+      "StateID",
+      "StateID"
+    ]
+  },
+  "District": {
+    "table_name": "District",
+    "fields": {
+      "DistrictID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "DistrictName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "StateID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "Active": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      }
+    },
+    "primary_keys": [
+      "DistrictID",
+      "DistrictID"
+    ]
+  },
+  "UnitType": {
+    "table_name": "UnitType",
+    "fields": {
+      "UnitTypeID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "UnitTypeName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "CityDistState": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "Hierarchy": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "Active": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      }
+    },
+    "primary_keys": [
+      "UnitTypeID",
+      "UnitTypeID"
+    ]
+  },
+  "Unit": {
+    "table_name": "Unit",
+    "fields": {
+      "UnitID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "UnitName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "TypeID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "ParentUnit": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "NationalityID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "StateID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "DistrictID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "Active": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      }
+    },
+    "primary_keys": [
+      "UnitID",
+      "UnitID"
+    ]
+  },
+  "Rank": {
+    "table_name": "Rank",
+    "fields": {
+      "RankID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "RankName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "Hierarchy": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "Active": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      }
+    },
+    "primary_keys": [
+      "RankID",
+      "RankID"
+    ]
+  },
+  "Designation": {
+    "table_name": "Designation",
+    "fields": {
+      "DesignationID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "DesignationName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "Active": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      },
+      "SortOrder": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "DesignationID",
+      "DesignationID"
+    ]
+  },
+  "Employee": {
+    "table_name": "Employee",
+    "fields": {
+      "EmployeeID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "DistrictID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "UnitID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "RankID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "DesignationID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "KGID": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "FirstName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "EmployeeDOB": {
+        "type": "Optional[str]",
+        "sql_type": "DATE",
+        "nullable": true,
+        "default": null
+      },
+      "GenderID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "BloodGroupID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "PhysicallyChallenged": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "0"
+      },
+      "AppointmentDate": {
+        "type": "Optional[str]",
+        "sql_type": "DATE",
+        "nullable": true,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "EmployeeID",
+      "EmployeeID"
+    ]
+  },
+  "Court": {
+    "table_name": "Court",
+    "fields": {
+      "CourtID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CourtName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "DistrictID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "StateID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "Active": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      }
+    },
+    "primary_keys": [
+      "CourtID",
+      "CourtID"
+    ]
+  },
+  "CaseCategory": {
+    "table_name": "CaseCategory",
+    "fields": {
+      "CaseCategoryID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "LookupValue": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "CaseCategoryID",
+      "CaseCategoryID"
+    ]
+  },
+  "GravityOffence": {
+    "table_name": "GravityOffence",
+    "fields": {
+      "GravityOffenceID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "LookupValue": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "GravityOffenceID",
+      "GravityOffenceID"
+    ]
+  },
+  "CrimeHead": {
+    "table_name": "CrimeHead",
+    "fields": {
+      "CrimeHeadID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CrimeGroupName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "Active": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      }
+    },
+    "primary_keys": [
+      "CrimeHeadID",
+      "CrimeHeadID"
+    ]
+  },
+  "CrimeSubHead": {
+    "table_name": "CrimeSubHead",
+    "fields": {
+      "CrimeSubHeadID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CrimeHeadID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CrimeHeadName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "SeqID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "CrimeSubHeadID",
+      "CrimeSubHeadID"
+    ]
+  },
+  "Act": {
+    "table_name": "Act",
+    "fields": {
+      "ActCode": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "ActDescription": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "ShortName": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "Active": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      }
+    },
+    "primary_keys": [
+      "ActCode",
+      "ActCode"
+    ]
+  },
+  "Section": {
+    "table_name": "Section",
+    "fields": {
+      "ActCode": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "SectionCode": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "SectionDescription": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "Active": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      }
+    },
+    "primary_keys": [
+      "ActCode",
+      "SectionCode"
+    ]
+  },
+  "CrimeHeadActSection": {
+    "table_name": "CrimeHeadActSection",
+    "fields": {
+      "CrimeHeadID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "ActCode": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "SectionCode": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "CrimeHeadID",
+      "ActCode",
+      "SectionCode"
+    ]
+  },
+  "CaseStatusMaster": {
+    "table_name": "CaseStatusMaster",
+    "fields": {
+      "CaseStatusID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CaseStatusName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "CaseStatusID",
+      "CaseStatusID"
+    ]
+  },
+  "OccupationMaster": {
+    "table_name": "OccupationMaster",
+    "fields": {
+      "OccupationID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "OccupationName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "OccupationID",
+      "OccupationID"
+    ]
+  },
+  "ReligionMaster": {
+    "table_name": "ReligionMaster",
+    "fields": {
+      "ReligionID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "ReligionName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "ReligionID",
+      "ReligionID"
+    ]
+  },
+  "CasteMaster": {
+    "table_name": "CasteMaster",
+    "fields": {
+      "caste_master_id": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "caste_master_name": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "caste_master_id",
+      "caste_master_id"
+    ]
+  },
+  "CaseMaster": {
+    "table_name": "CaseMaster",
+    "fields": {
+      "CaseMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CrimeNo": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "CaseNo": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "CrimeRegisteredDate": {
+        "type": "str",
+        "sql_type": "DATE",
+        "nullable": false,
+        "default": null
+      },
+      "PolicePersonID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "PoliceStationID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CaseCategoryID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "GravityOffenceID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CrimeMajorHeadID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CrimeMinorHeadID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CaseStatusID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CourtID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "IncidentFromDate": {
+        "type": "Optional[str]",
+        "sql_type": "DATETIME",
+        "nullable": true,
+        "default": null
+      },
+      "IncidentToDate": {
+        "type": "Optional[str]",
+        "sql_type": "DATETIME",
+        "nullable": true,
+        "default": null
+      },
+      "InfoReceivedPSDate": {
+        "type": "Optional[str]",
+        "sql_type": "DATETIME",
+        "nullable": true,
+        "default": null
+      },
+      "latitude": {
+        "type": "Optional[float]",
+        "sql_type": "DECIMAL",
+        "nullable": true,
+        "default": null
+      },
+      "longitude": {
+        "type": "Optional[float]",
+        "sql_type": "DECIMAL",
+        "nullable": true,
+        "default": null
+      },
+      "BriefFacts": {
+        "type": "Optional[str]",
+        "sql_type": "LONGTEXT",
+        "nullable": true,
+        "default": null
+      },
+      "CreatedAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      "UpdatedAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    },
+    "primary_keys": [
+      "CaseMasterID",
+      "CaseMasterID"
+    ]
+  },
+  "Inv_OccuranceTime": {
+    "table_name": "Inv_OccuranceTime",
+    "fields": {
+      "OccuranceTimeID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CaseMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "OccuranceFromDate": {
+        "type": "Optional[str]",
+        "sql_type": "DATETIME",
+        "nullable": true,
+        "default": null
+      },
+      "OccuranceToDate": {
+        "type": "Optional[str]",
+        "sql_type": "DATETIME",
+        "nullable": true,
+        "default": null
+      },
+      "LocationDescription": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "Latitude": {
+        "type": "Optional[float]",
+        "sql_type": "DECIMAL",
+        "nullable": true,
+        "default": null
+      },
+      "Longitude": {
+        "type": "Optional[float]",
+        "sql_type": "DECIMAL",
+        "nullable": true,
+        "default": null
+      },
+      "CreatedAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    },
+    "primary_keys": [
+      "OccuranceTimeID",
+      "OccuranceTimeID"
+    ]
+  },
+  "ComplainantDetails": {
+    "table_name": "ComplainantDetails",
+    "fields": {
+      "ComplainantID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CaseMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "ComplainantName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "AgeYear": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "OccupationID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "ReligionID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "CasteID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "GenderID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "ComplainantID",
+      "ComplainantID"
+    ]
+  },
+  "ActSectionAssociation": {
+    "table_name": "ActSectionAssociation",
+    "fields": {
+      "CaseMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "ActID": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "SectionID": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "ActOrderID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "SectionOrderID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "CaseMasterID",
+      "ActID",
+      "SectionID"
+    ]
+  },
+  "Victim": {
+    "table_name": "Victim",
+    "fields": {
+      "VictimMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CaseMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "VictimName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "AgeYear": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "GenderID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "VictimPolice": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "0"
+      }
+    },
+    "primary_keys": [
+      "VictimMasterID",
+      "VictimMasterID"
+    ]
+  },
+  "Accused": {
+    "table_name": "Accused",
+    "fields": {
+      "AccusedMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CaseMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "AccusedName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "AgeYear": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "GenderID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "PersonID": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "AccusedMasterID",
+      "AccusedMasterID"
+    ]
+  },
+  "ArrestSurrender": {
+    "table_name": "ArrestSurrender",
+    "fields": {
+      "ArrestSurrenderID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CaseMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "ArrestSurrenderTypeID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "ArrestSurrenderDate": {
+        "type": "str",
+        "sql_type": "DATE",
+        "nullable": false,
+        "default": null
+      },
+      "ArrestSurrenderStateId": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "ArrestSurrenderDistrictId": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "PoliceStationID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "IOID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "CourtID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "AccusedMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "IsAccused": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      },
+      "IsComplainantAccused": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "0"
+      }
+    },
+    "primary_keys": [
+      "ArrestSurrenderID",
+      "ArrestSurrenderID"
+    ]
+  },
+  "inv_arrestsurrenderaccused": {
+    "table_name": "inv_arrestsurrenderaccused",
+    "fields": {
+      "ArrestSurrenderID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "AccusedMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "ArrestSurrenderID",
+      "AccusedMasterID"
+    ]
+  },
+  "ChargesheetDetails": {
+    "table_name": "ChargesheetDetails",
+    "fields": {
+      "CSID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CaseMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "csdate": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": null
+      },
+      "cstype": {
+        "type": "str",
+        "sql_type": "CHAR",
+        "nullable": false,
+        "default": null
+      },
+      "PolicePersonID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CreatedAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    },
+    "primary_keys": [
+      "CSID",
+      "CSID"
+    ]
+  },
+  "CrimePrediction": {
+    "table_name": "CrimePrediction",
+    "fields": {
+      "PredictionID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CaseMasterID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "DistrictID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "UnitID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CrimeHeadID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "PredictionDate": {
+        "type": "str",
+        "sql_type": "DATE",
+        "nullable": false,
+        "default": null
+      },
+      "PredictionType": {
+        "type": "str",
+        "sql_type": "ENUM",
+        "nullable": false,
+        "default": null
+      },
+      "RiskLevel": {
+        "type": "str",
+        "sql_type": "ENUM",
+        "nullable": false,
+        "default": null
+      },
+      "ConfidenceScore": {
+        "type": "Optional[float]",
+        "sql_type": "DECIMAL",
+        "nullable": true,
+        "default": null
+      },
+      "PredictionWindow": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "ModelVersion": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "ModelParameters": {
+        "type": "Optional[str]",
+        "sql_type": "JSON",
+        "nullable": true,
+        "default": null
+      },
+      "PredictionStatus": {
+        "type": "str",
+        "sql_type": "ENUM",
+        "nullable": false,
+        "default": "PENDING"
+      },
+      "ValidationNotes": {
+        "type": "Optional[str]",
+        "sql_type": "TEXT",
+        "nullable": true,
+        "default": null
+      },
+      "ValidatedBy": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "ValidatedAt": {
+        "type": "Optional[str]",
+        "sql_type": "DATETIME",
+        "nullable": true,
+        "default": null
+      },
+      "CreatedAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      "UpdatedAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    },
+    "primary_keys": [
+      "PredictionID",
+      "PredictionID"
+    ]
+  },
+  "CrimeHotspot": {
+    "table_name": "CrimeHotspot",
+    "fields": {
+      "HotspotID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "DistrictID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "UnitID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CrimeHeadID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "HotspotName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "CenterLatitude": {
+        "type": "float",
+        "sql_type": "DECIMAL",
+        "nullable": false,
+        "default": null
+      },
+      "CenterLongitude": {
+        "type": "float",
+        "sql_type": "DECIMAL",
+        "nullable": false,
+        "default": null
+      },
+      "RadiusMeters": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": "500"
+      },
+      "BoundaryGeoJSON": {
+        "type": "Optional[str]",
+        "sql_type": "JSON",
+        "nullable": true,
+        "default": null
+      },
+      "CrimeCount": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": "0"
+      },
+      "RiskLevel": {
+        "type": "str",
+        "sql_type": "ENUM",
+        "nullable": false,
+        "default": null
+      },
+      "HotspotStatus": {
+        "type": "str",
+        "sql_type": "ENUM",
+        "nullable": false,
+        "default": "ACTIVE"
+      },
+      "AnalysisPeriodFrom": {
+        "type": "str",
+        "sql_type": "DATE",
+        "nullable": false,
+        "default": null
+      },
+      "AnalysisPeriodTo": {
+        "type": "str",
+        "sql_type": "DATE",
+        "nullable": false,
+        "default": null
+      },
+      "LastUpdated": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      "CreatedAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    },
+    "primary_keys": [
+      "HotspotID",
+      "HotspotID"
+    ]
+  },
+  "CrimeAssociation": {
+    "table_name": "CrimeAssociation",
+    "fields": {
+      "AssociationID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "SourceCaseMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "TargetCaseMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "AssociationType": {
+        "type": "str",
+        "sql_type": "ENUM",
+        "nullable": false,
+        "default": null
+      },
+      "AssociationStrength": {
+        "type": "Optional[float]",
+        "sql_type": "DECIMAL",
+        "nullable": true,
+        "default": null
+      },
+      "AssociationNotes": {
+        "type": "Optional[str]",
+        "sql_type": "TEXT",
+        "nullable": true,
+        "default": null
+      },
+      "DetectedBy": {
+        "type": "str",
+        "sql_type": "ENUM",
+        "nullable": false,
+        "default": "SYSTEM"
+      },
+      "CreatedAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    },
+    "primary_keys": [
+      "AssociationID",
+      "AssociationID"
+    ]
+  },
+  "RepeatOffender": {
+    "table_name": "RepeatOffender",
+    "fields": {
+      "RepeatOffenderID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "AccusedMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "TotalCases": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": "0"
+      },
+      "TotalArrests": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": "0"
+      },
+      "FirstOffenseDate": {
+        "type": "Optional[str]",
+        "sql_type": "DATE",
+        "nullable": true,
+        "default": null
+      },
+      "LastOffenseDate": {
+        "type": "Optional[str]",
+        "sql_type": "DATE",
+        "nullable": true,
+        "default": null
+      },
+      "PrimaryMO": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": "LOW"
+      }
+    },
+    "primary_keys": [
+      "RepeatOffenderID"
+    ]
+  },
+  "MOProfile": {
+    "table_name": "MOProfile",
+    "fields": {
+      "MOProfileID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "AccusedMasterID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CrimeHeadID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "PreferredTimeOfDay": {
+        "type": "Optional[str]",
+        "sql_type": "ENUM",
+        "nullable": true,
+        "default": null
+      },
+      "PreferredDayOfWeek": {
+        "type": "Optional[str]",
+        "sql_type": "SET",
+        "nullable": true,
+        "default": null
+      },
+      "TypicalMethod": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "TypicalLocation": {
+        "type": "Optional[str]",
+        "sql_type": "ENUM",
+        "nullable": true,
+        "default": null
+      },
+      "ToolsUsed": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "TargetProfile": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "GeographicRange": {
+        "type": "Optional[float]",
+        "sql_type": "DECIMAL",
+        "nullable": true,
+        "default": null
+      },
+      "AverageIncidentDurationMins": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "PatternConfidence": {
+        "type": "Optional[float]",
+        "sql_type": "DECIMAL",
+        "nullable": true,
+        "default": null
+      },
+      "LinkedCaseCount": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": "0"
+      },
+      "CreatedAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      "UpdatedAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    },
+    "primary_keys": [
+      "MOProfileID",
+      "MOProfileID"
+    ]
+  },
+  "DashboardCache": {
+    "table_name": "DashboardCache",
+    "fields": {
+      "CacheID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "CacheKey": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "CacheScope": {
+        "type": "str",
+        "sql_type": "ENUM",
+        "nullable": false,
+        "default": null
+      },
+      "ScopeID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "CacheData": {
+        "type": "str",
+        "sql_type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      "GeneratedAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      "ExpiresAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": null
+      },
+      "HitCount": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": "0"
+      },
+      "LastAccessed": {
+        "type": "Optional[str]",
+        "sql_type": "DATETIME",
+        "nullable": true,
+        "default": null
+      },
+      "IsValid": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      }
+    },
+    "primary_keys": [
+      "CacheID",
+      "CacheID"
+    ]
+  },
+  "AuditLog": {
+    "table_name": "AuditLog",
+    "fields": {
+      "AuditID": {
+        "type": "int",
+        "sql_type": "BIGINT",
+        "nullable": false,
+        "default": null
+      },
+      "TableName": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "RecordID": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "OperationType": {
+        "type": "str",
+        "sql_type": "ENUM",
+        "nullable": false,
+        "default": null
+      },
+      "OldValue": {
+        "type": "Optional[str]",
+        "sql_type": "JSON",
+        "nullable": true,
+        "default": null
+      },
+      "NewValue": {
+        "type": "Optional[str]",
+        "sql_type": "JSON",
+        "nullable": true,
+        "default": null
+      },
+      "ChangedBy": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "ChangedByKGID": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "ChangeTimestamp": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      "IPAddress": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "UserAgent": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "SessionID": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "ChangeReason": {
+        "type": "Optional[str]",
+        "sql_type": "VARCHAR",
+        "nullable": true,
+        "default": null
+      },
+      "IsReversible": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      },
+      "ReversedAt": {
+        "type": "Optional[str]",
+        "sql_type": "DATETIME",
+        "nullable": true,
+        "default": null
+      },
+      "ReversedBy": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      }
+    },
+    "primary_keys": [
+      "AuditID",
+      "RecordID",
+      "AuditID"
+    ]
+  },
+  "AIAlert": {
+    "table_name": "AIAlert",
+    "fields": {
+      "AlertID": {
+        "type": "int",
+        "sql_type": "INT",
+        "nullable": false,
+        "default": null
+      },
+      "AlertType": {
+        "type": "str",
+        "sql_type": "ENUM",
+        "nullable": false,
+        "default": null
+      },
+      "AlertSeverity": {
+        "type": "str",
+        "sql_type": "ENUM",
+        "nullable": false,
+        "default": "INFO"
+      },
+      "AlertTitle": {
+        "type": "str",
+        "sql_type": "VARCHAR",
+        "nullable": false,
+        "default": null
+      },
+      "AlertDescription": {
+        "type": "str",
+        "sql_type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      "RelatedCaseMasterID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "RelatedHotspotID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "RelatedPredictionID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "RelatedDistrictID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "RelatedUnitID": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "AlertStatus": {
+        "type": "str",
+        "sql_type": "ENUM",
+        "nullable": false,
+        "default": "OPEN"
+      },
+      "AssignedTo": {
+        "type": "Optional[int]",
+        "sql_type": "INT",
+        "nullable": true,
+        "default": null
+      },
+      "AcknowledgedAt": {
+        "type": "Optional[str]",
+        "sql_type": "DATETIME",
+        "nullable": true,
+        "default": null
+      },
+      "ResolvedAt": {
+        "type": "Optional[str]",
+        "sql_type": "DATETIME",
+        "nullable": true,
+        "default": null
+      },
+      "ResolutionNotes": {
+        "type": "Optional[str]",
+        "sql_type": "TEXT",
+        "nullable": true,
+        "default": null
+      },
+      "AutoGenerated": {
+        "type": "bool",
+        "sql_type": "BIT",
+        "nullable": false,
+        "default": "1"
+      },
+      "CreatedAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      "UpdatedAt": {
+        "type": "str",
+        "sql_type": "DATETIME",
+        "nullable": false,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    },
+    "primary_keys": [
+      "AlertID",
+      "AlertID"
+    ]
+  }
+}

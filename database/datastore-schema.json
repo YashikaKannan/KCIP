@@ -1,0 +1,396 @@
+{
+  "tables": [
+    {
+      "name": "FIRs",
+      "columns": [
+        {
+          "name": "FIRNumber",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_unique": true,
+          "is_mandatory": true
+        },
+        {
+          "name": "PoliceStation",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": true
+        },
+        {
+          "name": "District",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": true
+        },
+        {
+          "name": "CrimeType",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": true
+        },
+        {
+          "name": "IPCSections",
+          "type": "VarChar",
+          "max_length": 255,
+          "is_mandatory": false
+        },
+        {
+          "name": "ComplainantName",
+          "type": "VarChar",
+          "max_length": 150,
+          "is_mandatory": true
+        },
+        {
+          "name": "IncidentDate",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "Status",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "Victims",
+      "columns": [
+        {
+          "name": "FIRNumber",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_mandatory": true
+        },
+        {
+          "name": "Name",
+          "type": "VarChar",
+          "max_length": 150,
+          "is_mandatory": true
+        },
+        {
+          "name": "Age",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "Gender",
+          "type": "VarChar",
+          "max_length": 20,
+          "is_mandatory": false
+        },
+        {
+          "name": "ContactNumber",
+          "type": "VarChar",
+          "max_length": 20,
+          "is_mandatory": false
+        }
+      ]
+    },
+    {
+      "name": "Accused",
+      "columns": [
+        {
+          "name": "FIRNumber",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_mandatory": true
+        },
+        {
+          "name": "Name",
+          "type": "VarChar",
+          "max_length": 150,
+          "is_mandatory": true
+        },
+        {
+          "name": "Alias",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": false
+        },
+        {
+          "name": "Age",
+          "type": "Int",
+          "is_mandatory": false
+        },
+        {
+          "name": "Status",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_mandatory": true
+        },
+        {
+          "name": "RiskLevel",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "Arrests",
+      "columns": [
+        {
+          "name": "ArrestID",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_unique": true,
+          "is_mandatory": true
+        },
+        {
+          "name": "AccusedID",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_mandatory": true
+        },
+        {
+          "name": "FIRNumber",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_mandatory": true
+        },
+        {
+          "name": "ArrestDate",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "ArrestingOfficer",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": true
+        },
+        {
+          "name": "DetentionLocation",
+          "type": "VarChar",
+          "max_length": 150,
+          "is_mandatory": false
+        }
+      ]
+    },
+    {
+      "name": "Chargesheets",
+      "columns": [
+        {
+          "name": "ChargesheetNumber",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_unique": true,
+          "is_mandatory": true
+        },
+        {
+          "name": "FIRNumber",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_mandatory": true
+        },
+        {
+          "name": "FilingDate",
+          "type": "DateTime",
+          "is_mandatory": true
+        },
+        {
+          "name": "CourtName",
+          "type": "VarChar",
+          "max_length": 150,
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "Predictions",
+      "columns": [
+        {
+          "name": "PredictionID",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_unique": true,
+          "is_mandatory": true
+        },
+        {
+          "name": "District",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": true
+        },
+        {
+          "name": "PredictionType",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": true
+        },
+        {
+          "name": "ConfidenceScore",
+          "type": "Double",
+          "is_mandatory": true
+        },
+        {
+          "name": "RiskLevel",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "Hotspots",
+      "columns": [
+        {
+          "name": "HotspotID",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_unique": true,
+          "is_mandatory": true
+        },
+        {
+          "name": "District",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": true
+        },
+        {
+          "name": "CenterLat",
+          "type": "Double",
+          "is_mandatory": true
+        },
+        {
+          "name": "CenterLng",
+          "type": "Double",
+          "is_mandatory": true
+        },
+        {
+          "name": "RadiusMeters",
+          "type": "Int",
+          "is_mandatory": true
+        },
+        {
+          "name": "RiskScore",
+          "type": "Double",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "columns": [
+        {
+          "name": "NotificationID",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_unique": true,
+          "is_mandatory": true
+        },
+        {
+          "name": "RecipientID",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": true
+        },
+        {
+          "name": "Type",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_mandatory": true
+        },
+        {
+          "name": "Title",
+          "type": "VarChar",
+          "max_length": 200,
+          "is_mandatory": true
+        },
+        {
+          "name": "Message",
+          "type": "Text",
+          "is_mandatory": true
+        },
+        {
+          "name": "IsRead",
+          "type": "Boolean",
+          "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "columns": [
+        {
+          "name": "ReportID",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_unique": true,
+          "is_mandatory": true
+        },
+        {
+          "name": "Type",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": true
+        },
+        {
+          "name": "Title",
+          "type": "VarChar",
+          "max_length": 200,
+          "is_mandatory": true
+        },
+        {
+          "name": "Format",
+          "type": "VarChar",
+          "max_length": 20,
+          "is_mandatory": true
+        },
+        {
+          "name": "GeneratedBy",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": true
+        },
+        {
+          "name": "FileURL",
+          "type": "VarChar",
+          "max_length": 500,
+          "is_mandatory": false
+        }
+      ]
+    },
+    {
+      "name": "AuditLogs",
+      "columns": [
+        {
+          "name": "LogID",
+          "type": "VarChar",
+          "max_length": 50,
+          "is_unique": true,
+          "is_mandatory": true
+        },
+        {
+          "name": "UserID",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": true
+        },
+        {
+          "name": "Action",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": true
+        },
+        {
+          "name": "Resource",
+          "type": "VarChar",
+          "max_length": 100,
+          "is_mandatory": true
+        },
+        {
+          "name": "Details",
+          "type": "Text",
+          "is_mandatory": false
+        },
+        {
+          "name": "Timestamp",
+          "type": "DateTime",
+          "is_mandatory": true
+        }
+      ]
+    }
+  ]
+}
