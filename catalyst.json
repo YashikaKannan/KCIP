@@ -1,0 +1,26 @@
+{
+  "functions": {
+    "source": "functions",
+    "ignore": [],
+    "targets": [
+      "authentication",
+      "registerfir",
+      "getfir",
+      "updatefir",
+      "deletefir",
+      "victim",
+      "accused",
+      "arrest",
+      "chargesheet",
+      "dashboard",
+      "crimeprediction",
+      "hotspotdetection",
+      "graphanalysis",
+      "repeatoffender",
+      "generatereport",
+      "uploadevidence",
+      "notifications",
+      "auditlogger"
+    ]
+  }
+}
